@@ -98,13 +98,17 @@ class ClustersBuilder {
 			clusteredPoints = new ArrayList<ClusterPoint>(relevantInputPointsList.size());
 			for (InputPoint point : relevantInputPointsList) {
 				boolean addedToExistingCluster = false;
-				for (ClusterPoint clusterPoint : clusteredPoints) {
-					if (clusterPoint.getPixelDistanceFrom(point) <= options.getPixelDistanceToJoinCluster()) {
-						clusterPoint.add(point);
-						addedToExistingCluster = true;
-						break;
+				
+				if (options.isClusterEnabled()) {
+					for (ClusterPoint clusterPoint : clusteredPoints) {
+						if (clusterPoint.getPixelDistanceFrom(point) <= options.getPixelDistanceToJoinCluster()) {
+							clusterPoint.add(point);
+							addedToExistingCluster = true;
+							break;
+						}
 					}
 				}
+				
 				if (addedToExistingCluster == false) {
 					clusteredPoints.add(new ClusterPoint(point, projection, false));
 				}

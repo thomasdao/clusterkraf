@@ -43,6 +43,11 @@ public class Options {
 	private double expandBoundsFactor = DEFAULT_EXPAND_BOUNDS_FACTOR;
 
 	/**
+	 * Enable or disable clustering
+	 */
+	private boolean clusterEnabled = true;
+	
+	/**
 	 * The MarkerOptionsChooser to use for customizing MarkerOptions objects.
 	 */
 	private MarkerOptionsChooser markerOptionsChooser;
@@ -116,7 +121,21 @@ public class Options {
 	/**
 	 * 
 	 */
-	private ProcessingListener processingListener;
+	private ProcessingListener processingListener;	
+	
+	/**
+	 * @return clusterEnabled
+	 */
+	public boolean isClusterEnabled() {
+		return clusterEnabled;
+	}
+
+	/**
+	 * @param clusterEnabled
+	 */
+	public void setClusterEnabled(boolean clusterEnabled) {
+		this.clusterEnabled = clusterEnabled;
+	}
 
 	/**
 	 * @return the transitionDuration
